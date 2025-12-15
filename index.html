@@ -26,7 +26,8 @@ button {
 <button onclick="send('off')">OFF</button>
 
 <script>
-const ESP_IP = "http://YOUR_PUBLIC_IP:80"; // ⬅️ נעדכן עוד רגע
+const ESP_IP = "http://10.32.251.109";
+נעדכן עוד רגע
 
 function send(cmd) {
   fetch(ESP_IP + "/" + cmd)
