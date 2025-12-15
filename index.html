@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ESP32 Control</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  margin-top: 50px;
+}
+button {
+  width: 200px;
+  height: 80px;
+  font-size: 26px;
+  margin: 20px;
+}
+</style>
+</head>
+<body>
+
+<h1>ESP32 Motor Control</h1>
+
+<button onclick="send('on')">ON</button><br>
+<button onclick="send('off')">OFF</button>
+
+<script>
+const ESP_IP = "http://YOUR_PUBLIC_IP:80"; // ⬅️ נעדכן עוד רגע
+
+function send(cmd) {
+  fetch(ESP_IP + "/" + cmd)
+    .catch(err => alert("Error"));
+}
+</script>
+
+</body>
+</html>
