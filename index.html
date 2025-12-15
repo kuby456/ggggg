@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
 <meta charset="UTF-8">
-<title>ESP32 Control</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESP32 Control</title>
+
 <style>
 body {
   font-family: Arial;
   text-align: center;
+  background: #eee;
   margin-top: 50px;
 }
 button {
@@ -18,20 +20,22 @@ button {
 }
 </style>
 </head>
+
 <body>
 
-<h1>ESP32 Motor Control</h1>
+<h1>שליטה במנוע</h1>
 
-<button onclick="send('on')">ON</button><br>
-<button onclick="send('off')">OFF</button>
+<button onclick="sendCmd('on')">הפעל</button><br>
+<button onclick="sendCmd('off')">כבה</button>
 
 <script>
 const ESP_IP = "http://10.32.251.109";
-נעדכן עוד רגע
 
-function send(cmd) {
+function sendCmd(cmd) {
   fetch(ESP_IP + "/" + cmd)
-    .catch(err => alert("Error"));
+    .then(response => response.text())
+    .then(text => console.log(text))
+    .catch(error => console.log(error));
 }
 </script>
 
